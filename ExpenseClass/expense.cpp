@@ -17,6 +17,8 @@ void expense::print(ostream &out) {
     out << "\tPurpose=" << purpose << endl;
 }
 
+
+//constructor
 daily::daily() {
     numexp = 0;
     day = -1;
@@ -41,4 +43,75 @@ void daily::print(ostream &out) {
     cout << "Daily=======================\n";
 
 }
+
+//constructor
+
+monthly::monthly(){
+    month=0;
+    maxdays=-1;
+}
+void monthly::setMonth(int m){
+    
+}
+void monthly::addExpense(<#int#>, <#double#>, <#string#>){
+    
+}
+//double monthly::getDailyExpense(<#int#>){
+//
+//}
+//double monthly::getMonthlyExpense(){
+//
+//}
+void monthly::printOneDay(<#ostream &#>, <#int#>){
+    
+}
+
+void monthly::print(ostream&){
+    
+}
+
+//constructor
+yearly::yearly(){
+    year=0;
+}
+void yearly::setYear(int y){
+    year = y;
+}
+void yearly::addExpense(<#int#>, <#int#>, <#double#>, <#string#>){
+    
+}
+//double yearly::getDailyExpense(<#int#>, <#int#>){
+//
+//}
+//
+//double yearly::getMonthlyExpense(<#int#>){
+//
+//}
+//
+//double yearly::getYearlyExpense(){
+//
+//}
+
+//int yearly::loadDataFromFile(<#string#>){
+//
+//}
+
+void yearly::printOneDay(<#ostream &#>, <#int#>, <#int#>){
+    
+}
+void yearly::printOneDay(<#int#>, <#int#>, <#int#>){
+    
+}
+
+void yearly::printOneMonth(<#ostream &#>, <#int#>){
+    
+}
+
+void yearly::print(<#ostream &#>){
+    
+}
+
+
+
+
 

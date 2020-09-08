@@ -80,7 +80,7 @@ public:
     // and sets the day value for each day
     void setMonth(int m);
 
-    // add and expense for a day
+    // add an expense for a day
     void addExpense(int, double, string);
 
     // get totals
@@ -104,7 +104,7 @@ public:
     yearly();
 
     // setter
-    void setYear(int y) { year = y; }
+    void setYear(int);
 
     // add an expense for a month and day
     void addExpense(int, int, double, string);
