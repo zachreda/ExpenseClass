@@ -18,6 +18,7 @@ void expense::print(ostream &out) {
 }
 
 
+
 //constructor
 daily::daily() {
     numexp = 0;
@@ -26,7 +27,7 @@ daily::daily() {
 
 int daily::addExpense(double a, string p) {
 
-    if (numexp<24) {
+    if (numexp<dsize) {
         exps[numexp].setExpense(a,p);
         numexp++;
     }
@@ -43,31 +44,46 @@ void daily::print(ostream &out) {
     cout << "Daily=======================\n";
 
 }
+double daily::getDailyExpense(){
+    double dailyExpense=0;
+    for (int i=0; i<numexp; i++) {
+        dailyExpense+=exps[i].getAmt();
+    }
+    return dailyExpense;
+}
+
 
 //constructor
 
 monthly::monthly(){
-    month=0;
-    maxdays=-1;
 }
 void monthly::setMonth(int m){
-    
+    month=m;
+    maxdays=mday[m];
 }
-void monthly::addExpense(<#int#>, <#double#>, <#string#>){
+void monthly::addExpense(int d, double amt, string p){
     
+    days[d].addExpense(amt, p);
 }
-//double monthly::getDailyExpense(<#int#>){
-//
-//}
-//double monthly::getMonthlyExpense(){
-//
-//}
-void monthly::printOneDay(<#ostream &#>, <#int#>){
+double monthly::getDailyExpense(int d){
     
+    return days[d].getDailyExpense();
+}
+double monthly::getMonthlyExpense(){
+    double monthyExpense=0;
+    for (int i=0; i<maxdays; i++) {
+        monthyExpense+=days[i].getDailyExpense();
+    }
+    return monthyExpense;
+}
+void monthly::printOneDay(ostream &out, int d){
+    days[d].print(out);
 }
 
-void monthly::print(ostream&){
-    
+void monthly::print(ostream &out){
+    for (int i=0; i<maxdays; i++) {
+        printOneDay(out, i);
+    }
 }
 
 //constructor
@@ -77,38 +93,71 @@ yearly::yearly(){
 void yearly::setYear(int y){
     year = y;
 }
-void yearly::addExpense(<#int#>, <#int#>, <#double#>, <#string#>){
+void yearly::addExpense(int m, int d, double amt, string p){
+    months[m].setMonth(m);
     
+    months[m].addExpense(d, amt, p);
 }
-//double yearly::getDailyExpense(<#int#>, <#int#>){
-//
-//}
-//
-//double yearly::getMonthlyExpense(<#int#>){
-//
-//}
-//
-//double yearly::getYearlyExpense(){
-//
-//}
-
-//int yearly::loadDataFromFile(<#string#>){
-//
-//}
-
-void yearly::printOneDay(<#ostream &#>, <#int#>, <#int#>){
-    
-}
-void yearly::printOneDay(<#int#>, <#int#>, <#int#>){
-    
+double yearly::getDailyExpense(int m, int d){
+    return months[m-1].getDailyExpense(d-1);
 }
 
-void yearly::printOneMonth(<#ostream &#>, <#int#>){
-    
+double yearly::getMonthlyExpense(int m){
+    return months[m-1].getMonthlyExpense();
 }
 
-void yearly::print(<#ostream &#>){
+double yearly::getYearlyExpense(){
+    double yearlyExpense=0;
+    for (int i=0; i<ysize; i++) {
+        yearlyExpense+=months[i].getMonthlyExpense();
+    }
+    return yearlyExpense;
+}
+
+int yearly::loadDataFromFile(string s){
     
+       fstream inputFile;
+       inputFile.open(s);
+       
+       if (inputFile.fail())
+       {
+           cout << "File not found" << endl;
+       }
+    
+            //constants
+           int d=0, m=0, y=0;
+           double amt=0.0;
+           string p;
+           
+          
+       if (inputFile.is_open()) {
+           
+           while (inputFile>>m>>d>>y>>amt>>p) {
+               setYear(y);
+               addExpense(m-1, d-1, amt, p);
+
+
+           }
+           
+           
+       }
+    
+    inputFile.close();
+    return 0;
+}
+
+void yearly::printOneDay(ostream &out, int m, int d){
+    months[m-1].printOneDay(out, d-1);
+}
+
+void yearly::printOneMonth(ostream &out, int m){
+    months[m-1].print(out);
+}
+
+void yearly::print(ostream &out){
+    for (int i=0; i<ysize; i++) {
+        months[i].print(out);
+    }
 }
 
 

@@ -18,7 +18,11 @@ using namespace std;
 
 // const array to remember days of month (not doing leap year)
 // start with 0 so months start at 1
-const int mday[] = {0,31,28,31,30,31,30,31,31,30,31,30,31};
+const int mday[] = {31,28,31,30,31,30,31,31,30,31,30,31};
+const int dsize = 24;
+const int msize = 31;
+const int ysize = 12;
+const string writtenDaysInMonth[]={"null","January","February","March","April","May","June","July","August","September","October","November","December"};
 
 // expense class
 class expense {
@@ -44,7 +48,7 @@ public:
 // daily expense class
 class daily {
 private:
-    expense exps[24];
+    expense exps[dsize];
     int numexp;
     int day;
 
@@ -68,7 +72,7 @@ public:
 
 class monthly {
 private:
-    daily days[31];
+    daily days[msize];
     int maxdays;
     int month;
 
@@ -89,13 +93,14 @@ public:
 
     // print
     void printOneDay(ostream&, int);
+    //print for an entire month
     void print(ostream&);
 
 };
 
 class yearly {
 private:
-    monthly months[12];
+    monthly months[ysize];
     int year;
 
 public:

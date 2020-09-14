@@ -28,7 +28,7 @@
 		4BD9636E25081A2900AB106C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		4BD9637C25081BF800AB106C /* expense.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = expense.cpp; sourceTree = "<group>"; };
 		4BD9637F25081C4600AB106C /* expense.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = expense.h; sourceTree = "<group>"; };
-		4BD9638125081E4A00AB106C /* data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.txt; sourceTree = "<group>"; };
+		4BD9638125081E4A00AB106C /* data1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data1.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +61,7 @@
 		4BD9636D25081A2900AB106C /* ExpenseClass */ = {
 			isa = PBXGroup;
 			children = (
-				4BD9638125081E4A00AB106C /* data.txt */,
+				4BD9638125081E4A00AB106C /* data1.txt */,
 				4BD9636E25081A2900AB106C /* main.cpp */,
 				4BD9637F25081C4600AB106C /* expense.h */,
 				4BD9637C25081BF800AB106C /* expense.cpp */,
