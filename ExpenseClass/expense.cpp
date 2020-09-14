@@ -18,7 +18,6 @@ void expense::print(ostream &out) {
 }
 
 
-
 //constructor
 daily::daily() {
     numexp = 0;
@@ -125,7 +124,7 @@ int yearly::loadDataFromFile(string s){
        }
     
             //constants
-           int d=0, m=0, y=0;
+           int d=0, m=0, y=0, numLines=0;
            double amt=0.0;
            string p;
            
@@ -134,7 +133,8 @@ int yearly::loadDataFromFile(string s){
            
            while (inputFile>>m>>d>>y>>amt>>p) {
                setYear(y);
-               addExpense(m-1, d-1, amt, p);
+               addExpense(m-1, d-1, amt, p); //array for month starts at 0
+               numLines++;
 
 
            }
@@ -143,15 +143,15 @@ int yearly::loadDataFromFile(string s){
        }
     
     inputFile.close();
-    return 0;
+    return numLines;
 }
 
 void yearly::printOneDay(ostream &out, int m, int d){
-    months[m-1].printOneDay(out, d-1);
+    months[m-1].printOneDay(out, d-1); //array for month starts at 0
 }
 
 void yearly::printOneMonth(ostream &out, int m){
-    months[m-1].print(out);
+    months[m-1].print(out); //array for month starts at 0
 }
 
 void yearly::print(ostream &out){

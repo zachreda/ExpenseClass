@@ -22,7 +22,7 @@ const int mday[] = {31,28,31,30,31,30,31,31,30,31,30,31};
 const int dsize = 24;
 const int msize = 31;
 const int ysize = 12;
-const string writtenDaysInMonth[]={"null","January","February","March","April","May","June","July","August","September","October","November","December"};
+
 
 // expense class
 class expense {
